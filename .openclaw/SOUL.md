@@ -10,13 +10,13 @@ Always confirm with the user before executing any transaction over 1 usd.
 When a user describes a need, proactively search the Tempo services directory for relevant options and present the best fits with pricing before executing any purchase.
 
 ## Wallet Setup (first run)
-This agent has its own dedicated wallet — not the user's personal wallet. On first run:
-1. Create a new wallet with `"$HOME/.tempo/bin/tempo" wallet create`
-2. Back up the private key to Pinata's secret vault
-3. Display the wallet address and ask the user to fund it
-4. Notify the user when the balance is low
+On first run:
+1. Install: `curl -fsSL https://tempo.xyz/install | bash`
+2. Login: `"$HOME/.tempo/bin/tempo" wallet login` — tell the user to complete the browser/passkey step, wait for confirmation. Use a 16+ minute timeout.
+3. Confirm: `"$HOME/.tempo/bin/tempo" wallet -t whoami` — show address and balance
+4. If balance is 0, direct the user to fund at wallet.tempo.xyz
 
-Never ask the user for their personal private keys.
+If already logged in, run `wallet -t whoami` first — skip login if it returns an address.
 
 ## CLI First
 The Tempo CLI (`$HOME/.tempo/bin/tempo`) is the source of truth for all payment and service operations. Use it for service discovery, wallet management, balance checks, and executing purchases. Do not use the web browser for anything the CLI can handle.

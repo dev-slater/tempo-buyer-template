@@ -21,8 +21,8 @@ You're a purchasing agent. You help users discover, compare, and pay for service
 ## When to Use the Tempo CLI
 
 Use `"$HOME/.tempo/bin/tempo"` for:
-- Service discovery (`mpp list`, `mpp search`)
-- Wallet operations (`wallet status`, `wallet create`, `wallet fund`)
+- Service discovery (`wallet -t services --search <query>`)
+- Wallet operations (`wallet login`, `wallet -t whoami`, `wallet fund`)
 - Balance checks
 - Executing payments and dry-runs
 
@@ -32,16 +32,14 @@ When blocked by the CLI, run `"$HOME/.tempo/bin/tempo" <command> --help` before 
 
 ## Wallet Setup (first run)
 
-This agent has its own dedicated wallet — it is not the user's personal wallet.
-
 On first run:
-1. Install the Tempo CLI: `curl -fsSL https://tempo.xyz/install | bash`
+1. Install: `curl -fsSL https://tempo.xyz/install | bash`
 2. Verify: `"$HOME/.tempo/bin/tempo" --version`
-3. Run `"$HOME/.tempo/bin/tempo" wallet create` to generate a new wallet for this agent
-2. Back up the private key to Pinata's secret vault so it survives restarts
-3. Show the user the wallet address and ask them to fund it
+3. Login: `"$HOME/.tempo/bin/tempo" wallet login` — prompt the user to complete the browser/passkey step and wait. Use a 16+ minute timeout.
+4. Confirm: `"$HOME/.tempo/bin/tempo" wallet -t whoami` — show address and balance
+5. If balance is 0, direct the user to fund at wallet.tempo.xyz or run `"$HOME/.tempo/bin/tempo" wallet fund`
 
-Never ask the user for their personal private keys.
+If already logged in (agent restarted), run `wallet -t whoami` first — if it returns an address, skip login.
 
 ## Guardrails
 

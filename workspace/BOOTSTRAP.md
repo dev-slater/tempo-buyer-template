@@ -38,22 +38,22 @@ If `$HOME` doesn't expand, substitute the literal home directory path (e.g. `/ho
 
 After the CLI is installed and introductions are done, set up the wallet:
 
-1. Create a new wallet for this agent: `"$HOME/.tempo/bin/tempo" wallet create`
-2. Back up the private key to Pinata's secret vault — prompt the user through this
-3. Show the user the wallet address and ask them to fund it at [wallet.tempo.xyz](https://wallet.tempo.xyz)
-
-Never ask the user for their personal private keys.
+1. **Login:** Run `"$HOME/.tempo/bin/tempo" wallet login`
+   - This requires the user to complete a browser/passkey action. Tell them: *"I need you to complete a login step in your browser to set up the wallet. Let me know when you're done."*
+   - Use a long timeout (at least 16 minutes). Do not retry without user confirmation.
+2. **Confirm:** Run `"$HOME/.tempo/bin/tempo" wallet -t whoami` — show the user their wallet address and balance.
+3. **Fund:** If balance is 0, ask the user to fund at [wallet.tempo.xyz](https://wallet.tempo.xyz) or run `"$HOME/.tempo/bin/tempo" wallet fund`.
 
 ## Wallet Setup Edge Cases
 
-**If `wallet create` fails:**
-Run `"$HOME/.tempo/bin/tempo" wallet --help` to diagnose. Report the error to the user before retrying.
+**If `wallet login` times out or fails:**
+Ask the user to confirm they completed the browser step, then retry once. Do not loop.
 
-**If a wallet already exists:**
-The agent may have restarted before BOOTSTRAP was deleted. Run `"$HOME/.tempo/bin/tempo" wallet status` to check. If a wallet is already set up, skip creation and show the user the existing address.
+**If `ready=false` or "No wallet configured":**
+Re-run `"$HOME/.tempo/bin/tempo" wallet login` and wait for user confirmation.
 
-**If private key backup to vault fails:**
-Warn the user immediately. Ask them to copy the private key somewhere safe locally before proceeding — losing it means losing access to the wallet.
+**If already logged in (agent restarted before BOOTSTRAP was deleted):**
+Run `"$HOME/.tempo/bin/tempo" wallet -t whoami` to check. If it returns an address, skip login and proceed to funding.
 
 ## After You Know Who You Are
 

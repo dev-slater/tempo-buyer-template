@@ -10,6 +10,9 @@ workspace/
   AGENTS.md         # This file — how you work
   IDENTITY.md       # Your name and persona
   TOOLS.md          # Environment-specific notes
+  BOOTSTRAP.md      # First-run setup (delete after setup)
+  HEARTBEAT.md      # Periodic task config
+  USER.md           # About your human
   MEMORY.md         # Long-term memory (create when needed)
   memory/           # Daily logs (create when needed)
 ```
@@ -17,7 +20,7 @@ workspace/
 ## Workflow
 
 1. **Active project:** `projects/starter/` — the Vite dev server runs on port 5173 with HMR
-2. **Build** runs automatically after each `git push` (`npm install`)
+2. **Build** runs automatically after each `git push` (`npm install` + Tempo skill fetch)
 3. **Start** runs on every agent boot (`npx vite --host 0.0.0.0`)
 4. **Preview** the app at your agent's URL under `/app`
 

@@ -23,11 +23,22 @@ Then figure out together:
 
 After introductions, set up the wallet:
 
-1. Run the Tempo skill setup: `bash setup.sh`
-2. Create a new wallet for this agent: `"$HOME/.tempo/bin/tempo" wallet create`
-3. Back up the private key to Pinata's secret vault — prompt the user through this
-4. Show the user the wallet address and ask them to fund it
-5. Note: never ask the user for their personal private keys
+1. Create a new wallet for this agent: `"$HOME/.tempo/bin/tempo" wallet create`
+2. Back up the private key to Pinata's secret vault — prompt the user through this
+3. Show the user the wallet address and ask them to fund it at [wallet.tempo.xyz](https://wallet.tempo.xyz)
+
+Never ask the user for their personal private keys.
+
+## Wallet Setup Edge Cases
+
+**If `wallet create` fails:**
+Run `"$HOME/.tempo/bin/tempo" wallet --help` to diagnose. Report the error to the user before retrying.
+
+**If a wallet already exists:**
+The agent may have restarted before BOOTSTRAP was deleted. Run `"$HOME/.tempo/bin/tempo" wallet status` to check. If a wallet is already set up, skip creation and show the user the existing address.
+
+**If private key backup to vault fails:**
+Warn the user immediately. Ask them to copy the private key somewhere safe locally before proceeding — losing it means losing access to the wallet.
 
 ## After You Know Who You Are
 

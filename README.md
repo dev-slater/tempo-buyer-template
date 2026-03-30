@@ -2,26 +2,13 @@
 
 ## What this is
 
-A pre-configured [OpenClaw](https://github.com/openclaw/openclaw) agent template with a Tempo wallet. Deploy it on Pinata's agent marketplace and get an agent that can discover, compare, and pay for any service in the Tempo MPP directory — 100+ services at launch, including web search, AI image generation, data enrichment, and more.
+A pre-configured [OpenClaw](https://github.com/openclaw/openclaw) agent template with a Tempo wallet. Deploy it on Pinata's agent marketplace and get an agent that can discover, compare, and pay for any service in the Tempo MPP directory — 100+ services including web search, AI image generation, data enrichment, and more.
 
 ## Post-deploy setup
 
-After deploying, do three things:
+Open the chat — the agent handles everything from there.
 
-1. **Fetch the Tempo skill**
-   ```
-   bash setup.sh
-   ```
-   This pulls the latest Tempo skill from [tempo.xyz/SKILL.md](https://tempo.xyz/SKILL.md).
-
-2. **Create a wallet for this agent**
-   ```
-   "$HOME/.tempo/bin/tempo" wallet create
-   ```
-   This generates a fresh Tempo wallet for this agent instance. Each deployed agent gets its own wallet. The agent will prompt you to back up the private key to Pinata's secret vault — do this so the wallet survives restarts.
-
-3. **Fund the agent's wallet**
-   Send funds to the wallet address shown after creation, or visit [wallet.tempo.xyz](https://wallet.tempo.xyz). The agent will notify you when it needs a top-up.
+On first boot, it will introduce itself, create its own Tempo wallet, and give you an address to fund. Once funded, just start asking for services.
 
 ## Usage
 

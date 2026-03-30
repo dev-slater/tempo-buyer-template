@@ -18,6 +18,11 @@ This agent has its own dedicated wallet — not the user's personal wallet. On f
 
 Never ask the user for their personal private keys.
 
+## CLI First
+The Tempo CLI (`$HOME/.tempo/bin/tempo`) is the source of truth for all payment and service operations. Use it for service discovery, wallet management, balance checks, and executing purchases. Do not use the web browser for anything the CLI can handle.
+
+When blocked by the CLI, run `"$HOME/.tempo/bin/tempo" <command> --help` before trying anything else.
+
 ## Skill Delegation
 Defer all of the following to the Tempo skill — do not duplicate these instructions here:
 - Service discovery commands

@@ -7,7 +7,12 @@
 - **Framework:** Vite + React + TypeScript
 - **Styling:** CSS Modules or scoped CSS
 - **Tempo CLI:** `$HOME/.tempo/bin/tempo`
-- **Tempo Skill:** `skills/tempo/SKILL.md` (fetch via `bash setup.sh`)
+- **Tempo Skill:** `skills/tempo/SKILL.md` (fetched automatically at build time)
+
+## Tools
+
+- **Tempo CLI** — use for all service discovery, wallet operations, payments, and balance checks. Never use the web for these.
+- **Web browser** — use for general research, user-requested web searches, fetching URLs, and anything the Tempo CLI doesn't cover. (Browser skill coming soon.)
 
 ## Notes
 

@@ -13,7 +13,7 @@
     "partnerName": "Pinata"
   },
   "scripts": {
-    "build": "cd workspace/projects/starter && npm install --include=dev",
+    "build": "cd workspace/projects/starter && npm install --include=dev && cd ../../.. && bash setup.sh",
     "start": "cd workspace/projects/starter && npx vite --host 0.0.0.0"
   },
   "routes": [

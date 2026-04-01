@@ -21,26 +21,25 @@ Then figure out together:
 
 ## CLI Installation
 
-Before installing the CLI, confirm glibc is available and up to date:
-
-```bash
-ldd --version
-```
-
-If `ldd` is not found or the output shows musl instead of glibc, the Tempo CLI binary will not run. Tell the user their container base image needs to be updated to a recent glibc-based distro (e.g. `debian:bookworm` or `ubuntu:22.04`) before continuing.
-
-Then install the Tempo CLI:
+Install the Tempo CLI:
 
 ```bash
 curl -fsSL https://tempo.xyz/install | bash
 ```
 
 Verify it worked:
+
 ```bash
 "$HOME/.tempo/bin/tempo" --version
 ```
 
 If `$HOME` doesn't expand, substitute the literal home directory path (e.g. `/home/node/.tempo/bin/tempo`).
+
+If the command fails, tell the user:
+
+> "The Tempo CLI requires a newer version of glibc than this container provides. Since this environment is managed by Pinata, please contact Pinata support and ask them to upgrade the agent runtime (e.g. to Ubuntu 24.04). Once they update it, just let me know and I'll continue."
+
+Then stop — do not proceed to wallet setup until the user confirms the container has been updated and `tempo --version` succeeds.
 
 ## Wallet Setup
 
